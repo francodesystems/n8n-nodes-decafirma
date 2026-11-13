@@ -1,0 +1,80 @@
+{
+  "name": "@francodesystems-npm/n8n-nodes-decafirma",
+  "version": "0.1.0",
+  "description": "n8n community node for DecaFirma, the Spanish electronic transport documents app: shipments, DeCA (documento de control administrativo), signed delivery notes, delivery routes, eCMR and the papers drivers upload, plus a webhook trigger.",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "decafirma",
+    "deca",
+    "documento-de-control",
+    "delivery-note",
+    "albaran",
+    "ecmr",
+    "transport",
+    "logistics",
+    "spain"
+  ],
+  "license": "MIT",
+  "homepage": "https://decafirma.com/desarrolladores",
+  "author": {
+    "name": "Francodesystems",
+    "email": "hola@francodesystems.com",
+    "url": "https://decafirma.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francodesystems/n8n-nodes-decafirma.git"
+  },
+  "bugs": {
+    "url": "https://github.com/francodesystems/n8n-nodes-decafirma/issues"
+  },
+  "engines": {
+    "node": ">=20.15"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && gulp build:icons",
+    "dev": "tsc --watch",
+    "format": "prettier nodes credentials test --write",
+    "lint": "eslint nodes credentials package.json && npm run lint:cloud",
+    "lint:cloud": "ESLINT_USE_FLAT_CONFIG=true eslint -c eslint.cloud.config.mjs nodes credentials",
+    "lintfix": "eslint nodes credentials package.json --fix",
+    "test": "npm run build && node --test test/*.test.js",
+    "release": "n8n-node release",
+    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json && node --test test/*.test.js && node scripts/scan-local.mjs",
+    "scan": "npm run build && node scripts/scan-local.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": [
+      "dist/credentials/DecaFirmaApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/DecaFirma/DecaFirma.node.js",
+      "dist/nodes/DecaFirma/DecaFirmaTrigger.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/eslint-plugin-community-nodes": "^0.9.0",
+    "@n8n/node-cli": "^0.23.0",
+    "@types/node": "^20.19.43",
+    "@typescript-eslint/parser": "~8.32.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-n8n-nodes-base": "^1.16.3",
+    "gulp": "^5.0.0",
+    "n8n-workflow": "*",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}
