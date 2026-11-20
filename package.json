@@ -1,6 +1,6 @@
 {
   "name": "@francodesystems-npm/n8n-nodes-decafirma",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "n8n community node for DecaFirma, the Spanish electronic transport documents app: shipments, DeCA (documento de control administrativo), signed delivery notes, delivery routes, eCMR and the papers drivers upload, plus a webhook trigger.",
   "keywords": [
     "n8n-community-node-package",
